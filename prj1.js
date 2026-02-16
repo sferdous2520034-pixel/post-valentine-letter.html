@@ -37,7 +37,7 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 // Logic to make YES btn to grow
-
+/* 
 let yesScale = 1;
 
 yesBtn.style.position = "relative"
@@ -56,7 +56,7 @@ noBtn.addEventListener("click", () => {
         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
          }
  });
-
+ */
 // YES is clicked
 
 yesBtn.addEventListener("click", () => {

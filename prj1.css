@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    min-height: 100vh; /* Changed from height: 100vh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("bg_img.png");
+    background-attachment: fixed; /* Keeps BG steady if we scroll */
+    font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden; /* Prevents scrollbars if you want a clean look */
+}
+
+/* Envelope Screen */
+#envelope-container {
+    text-align: center;
+    cursor:pointer;
+}
+
+@keyframes pulse {
+    0% {
+        transform:scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#envelope{
+    width: 200px;
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+}
+
+#letter-container{
+    display: none;
+    position:fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-window {
+    width: 90vw;
+    max-width: 500px;
+    
+    /* 1. Reduce top padding to pull the text up */
+    /* Adjust '80px' until the title sits perfectly in your image header */
+    padding: 80px 20px 20px 20px; 
+    box-sizing: border-box; 
+    
+    /* 2. Stack elements vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content from the top down */
+    gap: 10px; /* Space between title, image, and buttons */
+    
+    background-image: url("window.png");
+    background-size: 100% 100%; /* Important: stretches frame to fit content */
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* 3. Remove aspect-ratio! Let the content decide the height */
+    height: auto;
+    min-height: 500px; 
+
+    transform: scale(1.2);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+h1 {
+    font-size: 23px; /* Slightly smaller for better fit */
+    margin: 0;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 40px;
+}
+ 
+/* Cat */
+
+.human {
+    width: 260px; /* Reduced size to ensure buttons stay inside */
+    height: auto;
+    margin: 5px 0;
+}
+
+.letter-window.final .cat {
+    width: 180px;
+}
+
+/* buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto; /* Pushes buttons to the bottom of the content area */
+    margin-bottom: 20px; /* Keeps them safely above the bottom border */
+}
+
+.no-wrapper{
+    position:relative;
+}
+
+.btn {
+    width: 120px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.yes-btn,
+.no-btn {
+width: 120px;
+height: auto;
+display: inline-block;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.no-btn {
+    z-index: 1;
+    position: relative;
+    transition: transform 0.15s ease;
+    cursor: default;
+}
+
+.final-text{
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255,240,240,0.5);
+    border-radius: 12px;
+}
